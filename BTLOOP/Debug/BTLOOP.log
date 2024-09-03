@@ -1,0 +1,6 @@
+﻿  DoiTuongCoSo.cpp
+  DoiTuongCoSo.h
+  main.cpp
+  Generating Code...
+C:\BTL\BTLOOP\BTLOOP\DoiTuongCoSo.cpp(46,1): warning C4715: 'BaseObj::loadImage': not all control paths return a value
+  BTLOOP.vcxproj -> C:\BTL\BTLOOP\Debug\BTLOOP.exe
