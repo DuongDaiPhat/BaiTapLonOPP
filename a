@@ -1,0 +1,11 @@
+[33mcommit 81a1a96a41f635d7a9f06dbcbf6ae1d502f64495[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Duong Dai Phat <duongphat521@gmail.com>
+Date:   Tue Sep 3 10:38:56 2024 +0700
+
+    Sua lai ham main, them thu vien Ham Co Ban, Doi Tuong Co So, tach cac chuc nang trong main thanh cac file khac nhau
+
+[33mcommit dd6362f00692d6fc9ddac1d10f82f82a294f2e5a[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Duong Dai Phat <duongphat521@gmail.com>
+Date:   Sat Aug 31 21:00:27 2024 +0700
+
+    add main.cpp

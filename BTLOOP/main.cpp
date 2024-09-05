@@ -1,13 +1,15 @@
-﻿#include "HamCoBan.h"
+﻿#include "Map.h"
 #include "DoiTuongCoSo.h"
 
+
 BaseObj background;
+map_Object gameMap;
 
 //Thay vì Init từng window, renderer,.. thì dùng chung một hàm InitData()//
 //Hàm InitData sẽ khởi tạo tất cả các chức năng trong SDL cần thiết để load ảnh lên màn hình//
 //Trả về 0 nếu khởi tạo thất bại//
 
-bool initData() {
+static bool initData() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		cout << "Loi mo window\n";
 		return false;
@@ -16,7 +18,7 @@ bool initData() {
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	
 	//Khởi tạo window//
-	window = SDL_CreateWindow("BTLOOP", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("BTLOOP", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_FULLSCREEN);
 	//Nếu tạo thành công window thì mới tạo tiếp và tương tự//
 	if (window == NULL) {
 		return false;
@@ -40,7 +42,7 @@ bool initData() {
 }
 
 //Hàm load back ground trong thư mục assets
-bool loadBackGround() {
+static bool loadBackGround() {
 	bool check = background.loadImage("C:\\BTL\\BTLOOP\\assets\\background1.jpg", renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (check == false) {
 		return false;
@@ -48,8 +50,17 @@ bool loadBackGround() {
 	return true;
 }
 
+static bool loadMap() {
+	bool check = gameMap.loadMap("C:\\BTL\\BTLOOP\\assets\\map.bmp", renderer);
+	if (check == false) {
+		return false;
+	}
+	gameMap.readType("C:\\BTL\\BTLOOP\\file\\map.txt");
+	return true;
+		
+}
 //Hàm tắt chương trình.
-void close() {
+static void close() {
 	background.Free();
 	SDL_DestroyWindow(window);
 	window = NULL;
@@ -65,15 +76,23 @@ int main(int argc, char* argv[]) {
 	if (loadBackGround() == false) {
 		return false;
 	}
-
+	if (loadMap() == false) {
+		return false;
+	}
 	bool running = true;
 	while (running) {
 		SDL_PollEvent(&event);
 		if (event.type == SDL_QUIT) {
 			running = false;
 		}
+		if (event.type == SDL_KEYDOWN) {
+			if (event.key.keysym.sym == SDLK_ESCAPE) {
+				running = false;
+			}
+		}
 		SDL_RenderClear(renderer);
 		background.render(renderer, NULL);
+		gameMap.MapRender(renderer);
 		SDL_RenderPresent(renderer);
 	}
 	close();

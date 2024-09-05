@@ -11,6 +11,7 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 #include <string>
+#include <fstream>
 
 //Init Các biến SDL cơ bản//
 static SDL_Window* window = NULL;
@@ -18,8 +19,8 @@ static SDL_Renderer* renderer = NULL;
 static SDL_Event event;
 
 //Thông số màn hình của game//
-const int SCREEN_WIDTH = 1280;
-const int SCREEN_HEIGHT = 800;
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1280;
 const int SCREEN_BBP = 32; //32 bits per pixel;
 
 //Thông số màu RGB trong suốt dùng để xóa background ảnh//
@@ -27,4 +28,9 @@ const int SCREEN_BBP = 32; //32 bits per pixel;
 const int RED_KEY = 167;
 const int BLUE_KEY = 175;
 const int GREEN_KEY = 180;
+
+const int MAP_WIDHT = 1920;
+const int MAP_HEIGHT = 1280;
+
+
 #endif

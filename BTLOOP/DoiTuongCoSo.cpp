@@ -12,6 +12,7 @@ BaseObj::~BaseObj() {
 	Free();
 }
 
+
 bool BaseObj::loadImage(string img_path, SDL_Renderer* screen, int width, int height) {
 	//Tạo một texture mới//
 	SDL_Texture* newTexture = NULL;

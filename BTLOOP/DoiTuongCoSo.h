@@ -18,7 +18,7 @@ public:
 	//Hàm mặc định giải phóng sau khi kết thúc chương trình Destructor//
 	~BaseObj();
 	//Hàm Set kích thước cho Rect
-	void setRect(const int& x, const int& y) {
+	void setRect(const int &x, const int &y) {
 		img_rect.x = x;
 		img_rect.y = y;
 	}
