@@ -44,6 +44,7 @@ bool BaseObj::loadImage(string img_path, SDL_Renderer* screen, int width, int he
 			return true;
 		}
 	}
+	return false;
 }
 
 //Hàm render ảnh//

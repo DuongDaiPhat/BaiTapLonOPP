@@ -1,4 +1,5 @@
 #include "Map.h"
+
 map_Object::map_Object() {
 	img_object = NULL;
 	img_rect.x = 0;
@@ -27,45 +28,44 @@ bool map_Object::loadMap(const string path, SDL_Renderer* renderer) {
 void map_Object::readType(const string file_Mapname) {
 	ifstream TypeFile(file_Mapname.c_str());
 	if (TypeFile.is_open()) {
-		for (int i = 0; i < 18; i++) {
-			for (int j = 0; j < 30; j++) {
-				TypeFile >> type[i][j];
+		for (int y = 0; y < MAX_TILE_Y; y++) {
+			for (int x = 0; x < MAX_TILE_X; x++) {
+				TypeFile >> type[y][x];
 			}
 		}
 	}
 	TypeFile.close();
 }
 
-void map_Object::MapRender(SDL_Renderer* renderer) {
-	for (int i = 0; i < 18; i++) {
-		for (int j = 0; j < 30; j++) {
-			tile[i][j].x = j * 64;
-			tile[i][j].y = i * 64;
-			tile[i][j].w = 64;
-			tile[i][j].h = 64;
-			SDL_Rect clip;
-			switch (type[i][j]) {
+void map_Object::MapRender(SDL_Renderer* renderer, int X_OFFSET) {
+	for (int y = 0; y < MAX_TILE_Y; y++) {
+		for (int x = 0; x < MAX_TILE_X; x++) {
+			tile[y][x + X_OFFSET].x = x * 64;
+			tile[y][x + X_OFFSET].y = y * 64;
+			tile[y][x + X_OFFSET].w = 64;
+			tile[y][x + X_OFFSET].h = 64;
+			switch (type[y][x + X_OFFSET]) {
 				case 1: {
-					clip = { 0, 0, 64, 64 };
+					mapClip[y][x + X_OFFSET] = {0, 0, 64, 64};
 					break;
 				}
 				case 2: {
-					clip = { 64, 0, 64, 64 };
+					mapClip[y][x + X_OFFSET] = { 64, 0, 64, 64 };
 					break;
 				}
 				case 3: {
-					clip = { 0, 64, 64, 64 };
+					mapClip[y][x + X_OFFSET] = { 0, 64, 64, 64 };
 					break;
 				}
 				case 4: {
-					clip = { 64, 64, 64, 64 };
+					mapClip[y][x + X_OFFSET] = { 64, 64, 64, 64 };
 					break;
 				}
 				default: {
 					continue;
 				}
 			}
-			SDL_RenderCopy(renderer, img_object, &clip, &tile[i][j]);
+			SDL_RenderCopy(renderer, img_object, &mapClip[y][x + X_OFFSET], &tile[y][x + X_OFFSET]);
 		}
 	}
 }

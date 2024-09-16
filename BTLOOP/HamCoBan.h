@@ -1,5 +1,5 @@
 ﻿//File chứa tất cả hàm cơ bản, thư viện cơ bản và thông số cơ bản dùng chung cho cả dự án//
-
+#pragma once
 #ifndef HAM_CO_BAN_H
 #define HAM_CO_BAN_H
 
@@ -32,5 +32,21 @@ const int GREEN_KEY = 180;
 const int MAP_WIDHT = 1920;
 const int MAP_HEIGHT = 1280;
 
+const int MAX_TILE_X = 50;
+const int MAX_TILE_Y = 18;
+
+
+typedef struct Input {
+	int goLeft;
+	int goRight;
+	int goUp;
+	int goDown;
+	int jump;
+}Input;
+
+enum walkType {
+	WALK_RIGHT = 0,
+	WALK_LEFT = 1
+};
 
 #endif

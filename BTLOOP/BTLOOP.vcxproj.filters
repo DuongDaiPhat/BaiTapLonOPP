@@ -33,12 +33,18 @@
     <ClCompile Include="DoiTuongCoSo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NhanVat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HamCoBan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NhanVat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
