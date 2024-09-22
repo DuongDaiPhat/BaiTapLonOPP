@@ -33,14 +33,12 @@ const int MAP_WIDHT = 1920;
 const int MAP_HEIGHT = 1280;
 
 const int MAX_TILE_X = 50;
-const int MAX_TILE_Y = 18;
+const int MAX_TILE_Y = 19;
 
 
 typedef struct Input {
 	int goLeft;
 	int goRight;
-	int goUp;
-	int goDown;
 	int jump;
 }Input;
 

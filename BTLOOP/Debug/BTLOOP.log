@@ -1,6 +1,4 @@
-﻿  NhanVat.cpp
-C:\BTL\BTLOOP\BTLOOP\NhanVat.cpp(50,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\BTL\BTLOOP\BTLOOP\NhanVat.cpp(51,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  Map.cpp
   main.cpp
   Generating Code...
   BTLOOP.vcxproj -> C:\BTL\BTLOOP\Debug\BTLOOP.exe

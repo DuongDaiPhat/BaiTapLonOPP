@@ -9,12 +9,13 @@ NhanVatChinh::NhanVatChinh() {
 	width_frame = 0;
 	height_frame = 0;
 	charStatus = WALK_RIGHT;
+	input_type.goLeft = 0;
+	input_type.goRight = 0;
 }
 
 NhanVatChinh::~NhanVatChinh() {
 
 }
-
 bool NhanVatChinh::loadImage(const string path, SDL_Renderer* renderer, int width, int height) {
 	bool check = BaseObj::loadImage(path, renderer, width, height);
 	if (check == true) {
@@ -33,7 +34,28 @@ void NhanVatChinh::setClips() {
 		}
 	}
 }
-
+void NhanVatChinh::HandleInput(const Uint8* pkeys, SDL_Renderer* renderer) {
+	if (pkeys[SDL_SCANCODE_A]) {
+		if (charStatus != WALK_LEFT) {
+			loadImage("C:\\BTL\\BTLOOP\\assets\\haracter\\CharacterMoveRight.bmp", renderer, 0, 0);
+		}
+		charStatus = WALK_LEFT;
+		input_type.goLeft = 1;
+	}
+	if (pkeys[SDL_SCANCODE_D]) {
+		if (charStatus != WALK_RIGHT) {
+			loadImage("C:\\BTL\\BTLOOP\\assets\\haracter\\CharacterMoveRight.bmp", renderer, 0, 0);
+		}
+		charStatus = WALK_RIGHT;
+		input_type.goRight = 1;
+	}
+	if (!pkeys[SDL_SCANCODE_A]) {
+		input_type.goLeft = 0;
+	}
+	if (!pkeys[SDL_SCANCODE_D]) {
+		input_type.goRight = 0;
+	}
+}
 void NhanVatChinh::Show(SDL_Renderer* renderer) {
 	if (input_type.goLeft == 1 || input_type.goRight == 1) {
 		frameNum++;
@@ -57,28 +79,5 @@ void NhanVatChinh::Show(SDL_Renderer* renderer) {
 	}
 	else {
 		SDL_RenderCopy(renderer, img_object, current_clip, &renderQuad);
-	}
-}
-
-void NhanVatChinh::HandleInput(const Uint8* pkeys, SDL_Renderer* renderer) {
-	if (pkeys[SDL_SCANCODE_A]) {
-		if (charStatus != WALK_LEFT) {
-			loadImage("C:\\BTL\\BTLOOP\\assets\\haracter\\CharacterMoveRight.bmp", renderer, 0, 0);
-		}
-		charStatus = WALK_LEFT;
-		input_type.goLeft = 1;
-	}
-	if (pkeys[SDL_SCANCODE_D]) {
-		if (charStatus != WALK_RIGHT) {
-			loadImage("C:\\BTL\\BTLOOP\\assets\\haracter\\CharacterMoveRight.bmp", renderer, 0, 0);
-		}
-		charStatus = WALK_RIGHT;
-		input_type.goRight = 1;
-	}
-	if (!pkeys[SDL_SCANCODE_A]) {
-		input_type.goLeft = 0;
-	}
-	if (!pkeys[SDL_SCANCODE_D]) {
-		input_type.goRight = 0;
 	}
 }

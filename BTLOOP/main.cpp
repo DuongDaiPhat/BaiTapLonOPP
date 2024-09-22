@@ -115,11 +115,11 @@ int main(int argc, char* argv[]) {
 			}
 			player.HandleInput(pKeys, renderer);
 			static int X_OFFSET = 0;
-			if (pKeys[SDL_SCANCODE_A]) {
+			if (pKeys[SDL_SCANCODE_LEFT]) {
 				X_OFFSET--;
 				SDL_Delay(20);
 			}
-			if (pKeys[SDL_SCANCODE_D]) {
+			if (pKeys[SDL_SCANCODE_RIGHT]) {
 				X_OFFSET++;
 				SDL_Delay(20);
 			}

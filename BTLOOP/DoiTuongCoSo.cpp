@@ -1,5 +1,4 @@
 ﻿#include "DoiTuongCoSo.h"
-#include "HamCoBan.h"
 
 BaseObj::BaseObj() {
 	img_object = NULL;
